@@ -1,0 +1,78 @@
+package com.portfolio.rohith.blog;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.Date;
+import java.util.Objects;
+import java.util.Optional;
+
+@Service
+public class BlogService {
+
+    private final BlogRepository blogRepository;
+
+    public BlogService(BlogRepository blogRepository){
+        this.blogRepository = blogRepository;
+    }
+
+    // Get all Blogs
+    public Iterable<Blog> getAll() {
+        return this.blogRepository.findAll();
+    }
+
+    //  Save Blog
+    public Blog add (Blog blog) {
+        this.blogRepository.save(blog);
+        return blog;
+    }
+
+    // Update a Blog by its ID
+    public Iterable<Blog> update(
+            Integer id,
+            String blogTitle,
+            String blogImageUrl,
+            String blogSmallDescription,
+            String blogContent,
+            String blogAuthor,
+            Date blogDate            
+    ){
+        Optional<Blog> blogToUpdateOptional = this.blogRepository.findById(id);
+
+        if(blogToUpdateOptional.isPresent()) {
+
+            Blog blogToUpdate = blogToUpdateOptional.get();
+            
+            if(Objects.nonNull(blogTitle)){
+                blogToUpdate.setBlogTitle(blogTitle);
+            } else if (Objects.nonNull(blogImageUrl)) {
+                blogToUpdate.setBlogImageUrl(blogImageUrl);
+            } else if (Objects.nonNull(blogSmallDescription)) {
+                blogToUpdate.setBlogSmallDescription(blogSmallDescription);
+            } else if (Objects.nonNull(blogContent)){
+                blogToUpdate.setBlogContent(blogContent);
+            } else if (Objects.nonNull(blogAuthor)){
+                blogToUpdate.setBlogAuthor(blogAuthor);
+            } else if (Objects.nonNull(blogDate)){
+                blogToUpdate.setBlogDate(blogDate);
+            }
+
+            this.blogRepository.save(blogToUpdate);
+
+            return this.blogRepository.findAll();
+
+        } else {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "Blog with id: "+id+"not found"
+            );
+        }
+    }
+
+    // Delete a blog by its id
+    public Iterable<Blog> delete(Integer id){
+        blogRepository.deleteById(id);
+        return this.blogRepository.findAll();
+    }
+}
