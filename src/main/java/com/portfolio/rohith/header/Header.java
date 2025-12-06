@@ -18,17 +18,19 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 @Entity
-@Table(name="HEADER")
+@Table(name="headerlinks")
 public class Header {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="ID")
+    @Column(name="PAGE_ID")
+    @JsonProperty("id")
     private Integer id;
 
-    @Column(name="NAME")
+    @Column(name="PAGE_NAME")
+    @JsonProperty("name")
     private String name;
 
-    @Column(name="URL_LINK")
+    @Column(name="PAGE_URL_LINK")
     @JsonProperty("url_link")
     private String urlLink;
 }
