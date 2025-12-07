@@ -16,14 +16,14 @@ public class BlogController {
 
     @GetMapping("/")
     public Iterable<Blog> getAllBlogs() {
-        return this.blogService.getAll();
+        return this.blogService.getAllBlogs();
     }
 
     @PostMapping("/add")
     public Iterable<Blog> addBlog(@RequestBody Blog blog) {
-        this.blogService.add(blog);
+        this.blogService.addBlog(blog);
 
-        return this.blogService.getAll();
+        return this.blogService.getAllBlogs();
     }
 
     @PutMapping("/update/{id}")
@@ -46,7 +46,7 @@ public class BlogController {
                 blogDate
         );
 
-        return this.blogService.getAll();
+        return this.blogService.getAllBlogs();
     }
 
 
@@ -54,6 +54,6 @@ public class BlogController {
     public Iterable<Blog> deleteBlog(@PathVariable Integer id) {
         this.blogService.delete(id);
 
-        return this.blogService.getAll();
+        return this.blogService.getAllBlogs();
     }
 }

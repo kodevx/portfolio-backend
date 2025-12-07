@@ -18,12 +18,12 @@ public class BlogService {
     }
 
     // Get all Blogs
-    public Iterable<Blog> getAll() {
+    public Iterable<Blog> getAllBlogs() {
         return this.blogRepository.findAll();
     }
 
     //  Save Blog
-    public Blog add (Blog blog) {
+    public Blog addBlog (Blog blog) {
         this.blogRepository.save(blog);
         return blog;
     }
