@@ -16,4 +16,9 @@ public class HeaderService {
     public Iterable<Header> getHeaderLinks() {
         return headerRepository.findAll();
     }
+
+    @Transactional
+    public void addHeaderLinks(Header headerLinks) {
+        this.headerRepository.save(headerLinks);
+    }
 }

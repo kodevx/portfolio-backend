@@ -1,9 +1,6 @@
 package com.portfolio.rohith.header;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/header-data")
@@ -19,5 +16,11 @@ public class HeaderController {
     @GetMapping("/")
     public Iterable<Header> getHeaderData() {
         return headerService.getHeaderLinks();
+    }
+
+    @PostMapping("/add")
+    public Iterable<Header> addHeaderData(@RequestBody Header HeaderLinks) {
+        this.headerService.addHeaderLinks(HeaderLinks);
+        return this.headerService.getHeaderLinks();
     }
 }
