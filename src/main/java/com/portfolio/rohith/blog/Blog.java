@@ -20,29 +20,29 @@ public class Blog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="BLOG_ID")
+    @Column(name="blog_id")
     private Integer blogId;
 
-    @Column(name="BLOG_TITLE")
+    @Column(name="blog_title")
     private String blogTitle;
 
-    @Column(name="BLOG_IMAGE_URL")
+    @Column(name="blog_image_url")
     private String blogImageUrl;
 
-    @Column(name="BLOG_SMALL_DESCRIPTION")
+    @Column(name="blog_small_description")
     private String blogSmallDescription;
 
-    @Column(name="BLOG_CONTENT")
+    @Column(name="blog_content")
     private String blogContent;
 
-    @Column(name="BLOG_AUTHOR")
+    @Column(name="blog_author")
     private String blogAuthor;
 
-    @Column(name="BLOG_DATE")
+    @Column(name="blog_date")
     private Date blogDate;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "blog_category_id", referencedColumnName = "blogCategoryId")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "blog_category_id", referencedColumnName = "BLOG_CATEGORY_ID")
     private BlogCategory blogCategory;
 
 }

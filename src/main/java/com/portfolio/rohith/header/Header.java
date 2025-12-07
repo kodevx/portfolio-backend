@@ -22,15 +22,15 @@ import lombok.NoArgsConstructor;
 public class Header {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="PAGE_ID")
+    @Column(name="page_id")
     @JsonProperty("id")
     private Integer id;
 
-    @Column(name="PAGE_NAME")
+    @Column(name="page_name")
     @JsonProperty("name")
     private String name;
 
-    @Column(name="PAGE_URL_LINK")
+    @Column(name="page_url_link")
     @JsonProperty("url_link")
     private String urlLink;
 }
