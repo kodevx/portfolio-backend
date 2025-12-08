@@ -65,7 +65,7 @@ public class BlogService {
         } else {
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST,
-                    "Blog with id: "+id+"not found"
+                    "Blog with ID \""+id+"\" not found"
             );
         }
     }

@@ -6,6 +6,7 @@ import java.util.Date;
 
 @RestController
 @RequestMapping("/blogs")
+@CrossOrigin(origins = { "http://localhost:8000" })
 public class BlogController {
 
     private final BlogService blogService;
