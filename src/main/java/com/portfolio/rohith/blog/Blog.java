@@ -14,7 +14,6 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-
 @Entity
 @Table(name="blogs")
 public class Blog {
@@ -49,7 +48,7 @@ public class Blog {
     private Date blogDate;
 
     @OneToOne(cascade = CascadeType.MERGE)
-    @JsonProperty("blog_category")
+    @JsonProperty("category")
     @JoinColumn(name = "blog_category_id", referencedColumnName = "blog_category_id")
-    private BlogCategory blogcategory;
+    private BlogCategory blogCategory;
 }

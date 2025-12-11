@@ -22,6 +22,15 @@ public class BlogService {
         return this.blogRepository.findAll();
     }
 
+    // Get all Blogs
+    public Iterable<Blog> getBlogsById(Integer id) {
+        if(id == 0) {               // 'ALL' Category has got 'id' in front-end which fetches and returns all Blogs
+            return this.blogRepository.findAll();
+        } else {
+            return this.blogRepository.findBlogByCategoryId(id);
+        }
+    }
+
     //  Save Blog
     public Blog addBlog (Blog blog) {
         this.blogRepository.save(blog);
@@ -44,7 +53,7 @@ public class BlogService {
 
             Blog blogToUpdate = blogToUpdateOptional.get();
             
-            if(Objects.nonNull(blogTitle)){
+            if(Objects.nonNull(blogTitle)) {
                 blogToUpdate.setBlogTitle(blogTitle);
             } else if (Objects.nonNull(blogImageUrl)) {
                 blogToUpdate.setBlogImageUrl(blogImageUrl);

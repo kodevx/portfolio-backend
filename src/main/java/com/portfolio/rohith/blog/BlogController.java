@@ -20,6 +20,11 @@ public class BlogController {
         return this.blogService.getAllBlogs();
     }
 
+    @GetMapping("/{id}")
+    public Iterable<Blog> getAllBlogsById(@PathVariable(required = true) Integer id) {
+        return this.blogService.getBlogsById(id);
+    }
+
     @PostMapping("/add")
     public Iterable<Blog> addBlog(@RequestBody Blog blog) {
         this.blogService.addBlog(blog);
