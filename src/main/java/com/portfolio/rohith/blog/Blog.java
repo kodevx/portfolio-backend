@@ -20,6 +20,7 @@ public class Blog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty("id")
     @Column(name="blog_id")
     private Integer blogId;
 
