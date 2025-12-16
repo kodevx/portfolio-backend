@@ -2,6 +2,7 @@ package com.portfolio.rohith.blog;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Date;
@@ -22,8 +23,13 @@ public class BlogService {
         return this.blogRepository.findAll();
     }
 
-    // Get all Blogs
-    public Iterable<Blog> getBlogsById(Integer id) {
+    // Get a Blog by its ID
+    public Optional<Blog> getBlogById(@PathVariable (required = true) Integer id) {
+        return this.blogRepository.findById(id);
+    }
+
+    // Get all Blogs by their categories
+    public Iterable<Blog> getBlogsByCategoryId(Integer id) {
         if(id == 0) {               // 'ALL' Category has got 'id' in front-end which fetches and returns all Blogs
             return this.blogRepository.findAll();
         } else {
