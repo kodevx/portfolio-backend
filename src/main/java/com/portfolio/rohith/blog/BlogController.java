@@ -3,6 +3,7 @@ package com.portfolio.rohith.blog;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/blogs")
@@ -20,9 +21,14 @@ public class BlogController {
         return this.blogService.getAllBlogs();
     }
 
+    @GetMapping("/category/{id}")
+    public Iterable<Blog> getAllBlogsByCategoryId(@PathVariable(required = true) Integer id) {
+        return this.blogService.getBlogsByCategoryId(id);
+    }
+
     @GetMapping("/{id}")
-    public Iterable<Blog> getAllBlogsById(@PathVariable(required = true) Integer id) {
-        return this.blogService.getBlogsById(id);
+    public Optional<Blog> getBlogById(@PathVariable(required = true) Integer id) {
+        return this.blogService.getBlogById(id);
     }
 
     @PostMapping("/add")
