@@ -26,5 +26,4 @@ public class Snaps {
     @Column(name="location")
     @JsonProperty("location")
     private String location;
-
 }

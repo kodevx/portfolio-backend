@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/snaps")
 @CrossOrigin(origins = { "http://localhost:8000", "http://192.168.1.35:8000/" })
 public class SnapsController {
 
