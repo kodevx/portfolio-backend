@@ -37,7 +37,7 @@ jobs:
       with:
         image: rohithnair7/portfolio-rohith-image
         tags: latest
-        registry: registry-url.io
+        registry: docker.io
         dockerfile: Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
