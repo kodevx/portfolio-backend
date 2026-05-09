@@ -35,7 +35,7 @@ jobs:
     - name: Build & Push Docker Image
       uses: mr-smithers-excellent/docker-build-push@v6
       with:
-        image: rohithnair7/portfolio-rohith-image
+        image: ${{ secrets.DOCKER_USERNAME }}/portfolio-rohith-image
         tags: latest
         registry: docker.io
         dockerfile: Dockerfile
