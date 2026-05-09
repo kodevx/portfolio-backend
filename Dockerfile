@@ -1,4 +1,4 @@
 FROM openjdk:21
 EXPOSE 10000
-ADD
-ENTRYPOINT ["top", "-b"]
+ADD target/portfolio-rohith-image.jar portfolio-rohith-image.jar
+ENTRYPOINT ["java", "-jar", "/portfolio-rohith-image"]
