@@ -1,0 +1,4 @@
+FROM openjdk:21
+EXPOSE 10000
+ADD
+ENTRYPOINT ["top", "-b"]
