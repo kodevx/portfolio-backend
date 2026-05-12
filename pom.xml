@@ -133,6 +133,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>portfolio-rohith-image</finalName>
 	</build>
 
 </project>
