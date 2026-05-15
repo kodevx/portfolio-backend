@@ -19,6 +19,13 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      DB_HOST_URL: ${{ secrets.DB_HOST_URL }}
+      DB_PORT: ${{ secrets.DB_PORT }}
+      DB_NAME: ${{ secrets.DB_NAME }}
+      DB_USERNAME: ${{ secrets.DB_USERNAME }}
+      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+
     steps:
     - uses: actions/checkout@v4
 
