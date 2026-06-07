@@ -10,9 +10,7 @@ name: Staging/Development CI/CD Workflow
 
 on:
   push:
-    branches: [ "develop" ]
-  pull_request:
-    branches: [ "develop" ]
+    branches: [ "staging" ]
 
 jobs:
   build:
