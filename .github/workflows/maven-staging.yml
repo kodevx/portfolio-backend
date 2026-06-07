@@ -6,10 +6,12 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Staging/Development CI/CD Workflow
+name: Production CI/CD Workflow
 
 on:
   push:
+    branches: [ "staging" ]
+  pull_request:
     branches: [ "staging" ]
 
 jobs:
@@ -25,14 +27,27 @@ jobs:
       DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Set up JDK 21
-      uses: actions/setup-java@v4
-      with:
-        java-version: '21'
-        distribution: 'temurin'
-        cache: maven
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
 
-    - name: Build with Maven
-      run: mvn clean install
+      - name: Build with Maven
+        run: mvn clean install
+
+      - name: Build & Push Docker Image
+        uses: mr-smithers-excellent/docker-build-push@v6
+        with:
+          image: ${{ secrets.DOCKER_USERNAME }}/portfolio-back-end-staging
+          tags: latest
+          registry: docker.io
+          dockerfile: Dockerfile
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Trigger Render Auto-Deploy
+        run: curl -X POST ${{secrets.RENDER_DEPLOY_HOOK}}
