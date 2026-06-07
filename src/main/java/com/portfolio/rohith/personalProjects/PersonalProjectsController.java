@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/personal-projects/")
-@CrossOrigin(origins = { "http://localhost:8000", "http://192.168.1.35:8000/" })
+@CrossOrigin(origins = { "https://rnair.tech/", /*"http://localhost:8000"*/ })
 public class PersonalProjectsController {
 
     private final PersonalProjectsService personalProjectsService;
