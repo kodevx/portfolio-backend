@@ -50,4 +50,4 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Trigger Render Auto-Deploy
-        run: curl -X POST ${{secrets.RENDER_DEPLOY_HOOK}}
+        run: curl -X POST ${{secrets.RENDER_STAGING_DEPLOY_HOOK}}
