@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Staging/Development CI/CD Workflow
+name: Development CI/CD Workflow
 
 on:
   push:
