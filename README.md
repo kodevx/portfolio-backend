@@ -4,6 +4,8 @@ A scalable backend application built with Spring Boot, designed with clean archi
 
 This project focuses on performance, maintainability, and production-ready deployment workflows using CI/CD automation.
 
+### Note: The backend is hosted on Render's free tier, so it may take up to ~1 minute to wake up after a period of inactivity. Once awake, the application should respond normally.
+
 ---
 
 ## ✨ Overview
